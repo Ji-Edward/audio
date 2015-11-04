@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Title:</strong>
+  "<%= @song.name %>"
+</p>
+
+<p>
+  <strong>Artist:</strong>
+  <%= @song.artist.name %>
+</p>
+
+  <h4><% "#{@song.rating}".to_i.times do %>
+    <span class="glyphicon glyphicon-star"></span>
+    <%end%>
+  </h4>
+  
+<p>
+  <% if @song.artist.avatar.exists? != nil %>
+    <%= image_tag @song.artist.avatar.url(:medium) %>
+  <%end%>
+</p>
+
+        <p>
+          <%= link_to edit_song_path(@song) do %>
+            <span class = "glyphicon glyphicon-edit"></span>
+            <%end%>|
+          <%= link_to @song, method: :delete, data: {confirm: 'Are you sure?' } do %>
+            <span class = "glyphicon glyphicon-trash"></span>
+            <%end%>
+        </p>
